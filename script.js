@@ -11,8 +11,8 @@
     /**creating object of card */
     let AceHearts = {
         img: cardImage,
-        x: 0,
-        y: 0
+        x: 10,
+        y: 10
     }
 
    
@@ -22,7 +22,7 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         let { img, x, y } = AceHearts;
         ctx.drawImage(img, x, y);
-        //animate recursion
+        //animate recursion rendering image
         requestAnimationFrame(animate);
 
        
