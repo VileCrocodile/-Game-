@@ -6,8 +6,7 @@
 
     //creating card image
     let cardImage = new Image();
-    cardImage.src = '/img/cards/ace_hearts.png';
-    console.log(cardImage);
+    cardImage.src = 'img/cards/ace_hearts.png';
     
     /**creating object of card */
     let AceHearts = {
@@ -23,6 +22,7 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         let { img, x, y } = AceHearts;
         ctx.drawImage(img, x, y);
+        //animate recursion
         requestAnimationFrame(animate);
 
        
