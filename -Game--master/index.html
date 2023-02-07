@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Solitaire Game</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <style>        
+    </style>
+  </head>
+  <body>
+    <div id="board">
+        <div class="stack" id="deck"></div>
+        <div class="stack" id="discard"></div>
+        <div class="stack" id="foundation1"></div>
+        <div class="stack" id="foundation2"></div>
+        <div class="stack" id="foundation3"></div>
+        <div class="stack" id="foundation4"></div>
+        <div class="stack" id="tableau1"></div>
+        <div class="stack" id="tableau2"></div>
+        <div class="stack" id="tableau3"></div>
+        <div class="stack" id="tableau4"></div>
+        <div class="stack" id="tableau5"></div>
+        <div class="stack" id="tableau6"></div>
+        <div class="stack" id="tableau7"></div>
+
+        <div id="card">
+            <div class="card spades">
+              <div class="suit">&spades;</div>
+              </div>
+              
+              <div class="card clubs">
+                <div class="suit">&clubs;</div>
+              </div>
+              
+              <div class="card diamonds">
+                <div class="suit">&diams;</div>
+              </div>
+              
+              <div class="card hearts">
+                <div class="suit">&hearts;</div>
+              </div>
+    </div>
+
+    <div class="container">
+
+        <div id="score">
+           <div class="timer">
+              <button id="play-pause">
+                 <i id="play">Play</i>
+              </button>
+              <button>
+                 <i id="pause">Pause</i>
+              </button>
+              <label>Timer:</label>
+              <span>00:00</span>
+           </div>
+           <div class="move-count" data-moves="0">
+              <label>Moves:</label>
+              <span>0</span>
+           </div>
+           <div class="score" data-score="0">
+              <label>Score:</label>
+              <span>0</span>
+           </div>
+        </div>
+    <script type="text/javascript" src="script.js">
+        card.innerHTML = `<span class="value">${tableau[i][j].value}</span>
+        <br><span class="suit ${tableau[i][j].suit}">${tableau[i][j].suit}</span>`;
+    </script>
+
+  </body>
+</html>
