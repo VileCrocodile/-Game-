@@ -21,9 +21,9 @@ const DrawPile = {
         arr.forEach(card => {
 
             card.setDrawPile(true);
-            card.setPosition({x, y: yVal});
+            card.setPosition({ x, y: yVal });
             card.reveal(false);
-            
+
             yVal += 0.25;
             if (init) {
                 this.arr.push(card)
@@ -47,12 +47,12 @@ const DrawPile = {
             height: VARS.build.cardHeight
         }
         VARS.allVisualAssets.unshift(this.resetButton);
- 
+
     },
     clickHandler: function () {
 
         FlipPile.clearClickabilities();
- 
+
         let top3 = this.arr.splice(-3).reverse();
 
         for (let i = 0; i < top3.length; i++) {
@@ -62,7 +62,7 @@ const DrawPile = {
             card.setClickability(false);
             card.setDrawPile(false);
             card.setFlipPile(true);
-            let cardPosition = {y: (VARS.build.cardHeight * 2 + 60) + (i * 10), x: card.getPosition().x };
+            let cardPosition = { y: (VARS.build.cardHeight * 2 + 60) + (i * 10), x: card.getPosition().x };
             card.setPosition(cardPosition);
             card.reveal(true);
         }

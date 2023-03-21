@@ -10,13 +10,13 @@ const FlipPile = {
     arr: [],
     allowReset: false,
     clearClickabilities: function () {
-        this.arr.forEach( card => {
+        this.arr.forEach(card => {
             card.setClickability(false);
         })
     },
     reset: function () {
-       this.arr = [];
-       this.allowReset = false;
+        this.arr = [];
+        this.allowReset = false;
     }
 
 }

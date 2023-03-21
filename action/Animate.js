@@ -5,7 +5,7 @@ import Utils from '../utils/Utils.js';
 import DragContainer from '../visualAssets/DragContainer.js';
 const Animate = {
     counter: 0,
-    start: function() {
+    start: function () {
 
         const { mousePoint, xyDiff, ctx, canvas } = VARS;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -35,7 +35,7 @@ const Animate = {
 
         requestAnimationFrame(() => this.start());
     },
-    cursor: function(boolean) {
+    cursor: function (boolean) {
         if (boolean) {
             VARS.canvas.style.cursor = "pointer";
         } else {

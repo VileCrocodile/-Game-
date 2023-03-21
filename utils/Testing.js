@@ -1,6 +1,14 @@
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
 const Testing = {
     printCardsArray: function (arr) {
-        arr.forEach( card => {
+        arr.forEach(card => {
             console.log(card.rank, card.suit)
         })
     }

@@ -8,9 +8,9 @@ import DrawPile from '../visualAssets/DrawPile.js';
 import DragContainer from '../visualAssets/DragContainer.js';
 const MouseUp = {
     activeCardExists: function () {
- 
+
         const { activeCard } = VARS;
-        
+
         if (activeCard.resetDrawPileButton) {
             DrawPile.reset();
         } else if (activeCard.drawPile) {
@@ -18,7 +18,7 @@ const MouseUp = {
         } else {
             let result = MoveCard.moveCardListener(activeCard)
 
-            if ( result.hit ) {
+            if (result.hit) {
                 MoveCard.moveCard(result.target, activeCard)
             } else {
                 DragContainer.returnCards();

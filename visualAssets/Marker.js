@@ -4,7 +4,7 @@
  */
 
 import VARS from "../utils/Vars.js";
-const Marker =  function () {
+const Marker = function () {
     return {
         img: undefined,
         src: '/bmps/marker.png',
@@ -25,10 +25,10 @@ const Marker =  function () {
             this.width = VARS.build.cardWidth;
             this._index = index;
         },
-        getPosition: function() {
+        getPosition: function () {
             return { x: this.x, y: this.y }
         },
-        setPosition: function(positionObject) {
+        setPosition: function (positionObject) {
             this.x = positionObject.x;
             this.y = positionObject.y;
         },
@@ -36,7 +36,7 @@ const Marker =  function () {
             this.clickable = boolean;
         },
         reveal: function () {
-            
+
         }
     }
 }

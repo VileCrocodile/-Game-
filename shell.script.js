@@ -1,4 +1,4 @@
 import Solitaire from './Solitaire.js';
-(function(){
+(function () {
     Solitaire.init();
 })()

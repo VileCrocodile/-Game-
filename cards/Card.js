@@ -1,9 +1,11 @@
-import VARS from "../utils/Vars.js";
+
 /***
  * 88
  * 
  */
-const Card =  function () {
+import VARS from "../utils/Vars.js";
+
+const Card = function () {
     return {
         img: undefined,
         cardFront: undefined,
@@ -30,8 +32,8 @@ const Card =  function () {
             this.suit = suit;
             this.img = new Image();
             this.cardFront = `bmps/card_bmps/${rank}_${suit}.png`;
-            this.cardBack =  `bmps/card_bmps/card_back.png`;
-            this.color = (suit === 'hearts' || suit === 'diamonds') ? "red" : "black" ;
+            this.cardBack = `bmps/card_bmps/card_back.png`;
+            this.color = (suit === 'hearts' || suit === 'diamonds') ? "red" : "black";
             this.value = value;
             this.x = x;
             this.y = y;
@@ -51,15 +53,15 @@ const Card =  function () {
             this.x = this.storeX;
             this.y = this.storeY;
         },
-        getPosition: function() {
+        getPosition: function () {
             return { x: this.x, y: this.y }
         },
-        setPosition: function(positionObject) {
+        setPosition: function (positionObject) {
             this.x = positionObject.x;
             this.y = positionObject.y;
         },
         reveal: function (boolean) {
-            this.img.src = boolean ? this.cardFront : this.cardBack ;
+            this.img.src = boolean ? this.cardFront : this.cardBack;
         },
         setClickability: function (boolean) {
             this.clickable = boolean;

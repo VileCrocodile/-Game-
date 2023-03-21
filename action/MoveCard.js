@@ -9,11 +9,11 @@ import Utils from '../utils/Utils.js';
 import FlipPile from '../visualAssets/FlipPile.js';
 import DragContainer from '../visualAssets/DragContainer.js';
 const MoveCard = {
-    moveCardListener: function(activeCard) {
+    moveCardListener: function (activeCard) {
 
-        let arr = [...VARS.slots, ...Object.keys(VARS.piles).map(item => Utils.returnLastArrayItem(VARS.piles[item]))];
+        let possibleDestinationCards = [...VARS.slots, ...Object.keys(VARS.piles).map(item => Utils.returnLastArrayItem(VARS.piles[item]))];
 
-        let item = arr.find(card => {
+        let target = possibleDestinationCards.find(card => {
 
             if (Utils.rectangleRectangleCollisionDetection(card, activeCard)) {
 
@@ -27,11 +27,11 @@ const MoveCard = {
 
         })
 
-        return item ? { hit: true, target: item } : { hit: false };
+        return target ? { hit: true, target } : { hit: false };
 
 
     },
-    moveCard: function(target, activeCard) {
+    moveCard: function (target, activeCard) {
 
         let { x, y, _index: pileKey, slot, marker } = target;
         let { _index, flipPile } = activeCard;
@@ -58,7 +58,7 @@ const MoveCard = {
 
         this.revealNextCard(tempArray)
     },
-    revealNextCard: function(arr) {
+    revealNextCard: function (arr) {
         if (arr.length) {
             let newTopCard = Utils.returnLastArrayItem(arr);
 

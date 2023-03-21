@@ -5,7 +5,7 @@
 
 
 import VARS from "../utils/Vars.js";
-const Slot =  function () {
+const Slot = function () {
     return {
         img: undefined,
         x: undefined,
@@ -31,10 +31,10 @@ const Slot =  function () {
         increaseSlotRank: function () {
             this.rank++;
         },
-        getPosition: function() {
+        getPosition: function () {
             return { x: this.x, y: this.y }
         },
-        setPosition: function(positionObject) {
+        setPosition: function (positionObject) {
             this.x = positionObject.x;
             this.y = positionObject.y;
         },
@@ -42,7 +42,7 @@ const Slot =  function () {
             this.clickable = boolean;
         },
         reveal: function () {
-            
+
         }
     }
 }
