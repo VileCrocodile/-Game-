@@ -15,6 +15,7 @@ const VARS = {
     canvas: document.querySelector('canvas'),
     init: function () {
         this.ctx = this.canvas.getContext('2d')
+        
     },
     spacing: {
         buffer: 10,
@@ -24,8 +25,8 @@ const VARS = {
     build: {
         cardWidth: 100,
         cardHeight: 150,
-        canvasWidth: 1000,
-        canvasHeight: 800,
+        canvasWidth: 600,
+        canvasHeight: 600,
         suits: ["clubs", "diamonds", "hearts", "spades"],
         ranks: ["ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"],
     },
