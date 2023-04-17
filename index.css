@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #f3dda5;
+    background-color: #f7d786;
 }
 
 canvas {
@@ -21,4 +21,18 @@ h1 {
 h2 {
     background-color: aqua;
     margin-bottom: 10%;
+}
+#countdown {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    font-weight: 200;
+    padding: 0 60px;
+    
+
+display: flex;
+align-items: flex-end;
+justify-content: end;
+color:red
+
+
 }
