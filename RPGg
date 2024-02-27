@@ -1,0 +1,193 @@
+import random
+import pyglet
+
+# Game window setup
+window = pyglet.window.Window(width=800, height=600)
+
+# Label to display text
+text_label = pyglet.text.Label("", font_name="Arial", font_size=16,
+                                x=10, y=window.height - 20, width=window.width - 20,
+                                multiline=True)
+
+# Define character and enemy classes
+class Character:
+    def __init__(self, name, hp, attack, defense):
+        self.name = name
+        self.hp = hp
+        self.attack = attack
+        self.defense = defense
+
+    def take_damage(self, damage):
+        self.hp -= (damage - self.defense)
+        if self.hp <= 0:
+            print(f"{self.name} has fainted!")
+
+    def attack(self, target):
+        damage = self.attack
+        target.take_damage(damage)
+        print(f"{self.name} attacks {target.name} for {damage} damage!")
+
+class Enemy(Character):
+    def __init__(self, name, hp, attack, defense, image_path):
+        super().__init__(name, hp, attack, defense)
+        self.image_path = "C:\Users\adamr\IdeaProjects\Gem RPG g"
+
+player = Character("Hero", 30, 4, 2)
+
+
+def update_text(text):
+    text_label.text = text
+
+
+def display_stats():
+    # Create labels or other visuals to display stats on the window
+    stat_labels = [
+        pyglet.text.Label(f"Name: {player.name}", font_name="Arial", font_size=14, x=10, y=window.height - 50),
+        pyglet.text.Label(f"HP: {player.hp}", font_name="Arial", font_size=14, x=100, y=window.height - 50),
+        pyglet.text.Label(f"Attack: {player.attack}", font_name="Arial", font_size=14, x=190, y=window.height - 50),
+        pyglet.text.Label(f"Defense: {player.defense}", font_name="Arial", font_size=14, x=280, y=window.height - 50),
+    ]
+    for label in stat_labels:
+        window.add_gloss(label)
+
+
+def handle_actions():
+    # Create buttons or other UI elements for player actions
+    attack_button = pyglet.text.Button("Attack", font_name="Arial", font_size=14, x=10, y=10)
+
+    @attack_button.event
+    def on_press():
+        # Handle attack action (placeholder for enemy selection and combat logic)
+        update_text("Choose an enemy to attack...")
+        # Replace with code to display enemy choices and handle combat
+
+    window.add_gloss(attack_button)
+
+
+
+# Define enemies for each level
+level_1_enemies = [
+    Enemy("Goblin", 20, 5, 2),
+    Enemy("Slime", 15, 3, 1),
+    Enemy("Bat", 10, 2, 0)
+]
+
+level_2_enemies = [
+    Enemy("Skeleton", 30, 7, 3),
+    Enemy("Orc", 25, 6, 2),
+    Enemy("Spider", 20, 4, 1)
+]
+
+level_3_enemies = [
+    Enemy("Dragon", 50, 10, 5),
+    Enemy("Warlock", 40, 8, 4),
+    Enemy("Giant", 35, 7, 3)
+]
+
+player = Character("Hero", 30, 4, 2)
+current_level = 1
+current_enemies = level_1_enemies
+
+# Game window setup
+window = pyglet.window.Window(width=800, height=600)
+
+# Label to display text
+text_label = pyglet.text.Label("", font_name="Arial", font_size=16,
+                                x=10, y=window.height - 20, width=window.width - 20,
+                                multiline=True)
+
+
+def update_text(text):
+    text_label.text = text
+
+
+def display_stats():
+    # Create labels or other visuals to display stats on the window
+    stat_labels = [
+        pyglet.text.Label(f"Name: {player.name}", font_name="Arial", font_size=14, x=10, y=window.height - 50),
+        pyglet.text.Label(f"HP: {player.hp}", font_name="Arial", font_size=14, x=100, y=window.height - 50),
+        pyglet.text.Label(f"Attack: {player.attack}", font_name="Arial", font_size=14, x=190, y=window.height - 50),
+        pyglet.text.Label(f"Defense: {player.defense}", font_name="Arial", font_size=14, x=280, y=window.height - 50),
+    ]
+    for label in stat_labels:
+        window.add_gloss(label)
+
+
+def handle_actions():
+    # Create buttons or other UI elements for player actions
+    attack_button = pyglet.text.Button("Attack", font_name="Arial", font_size=14, x=10, y=10)
+
+    @attack_button.event
+    def on_press():
+        # Display enemy choices
+        enemy_buttons = []
+        for i, enemy in enumerate(current_enemies):
+            enemy_button = pyglet.text.Button(f"{i+1}. {enemy.name}", font_name="Arial", font_size=12, x=110, y=window.height - 30 * (i + 2))
+
+            @enemy_button.event
+            def on_press():
+                # Handle attack on chosen enemy
+                attacking_enemy = current_enemies[enemy_button.text.split('.')[0] - 1]
+                player.attack(attacking_enemy)
+                update_text(f"{player.name} attacks {attacking_enemy.name} for {player.attack} damage!")
+                attacking_enemy.attack(player)
+                update_text(f"{attacking_enemy.name} attacks {player.name} for {attacking_enemy.attack} damage!")
+
+                # Check if enemy is defeated or player dies
+                if attacking_enemy.hp <= 0:
+                    current_enemies.remove(attacking_enemy)
+                    update_text(f"{attacking_enemy.name} has been defeated!")
+                    if not current_enemies:
+                        # Level completed, update level and enemies
+                        current_level += 1
+                        if current_level > 3:
+                            update_text(f"You have won the game!")
+                            return
+
+                        else:
+                            update_text(f"Level {current_level} complete!")
+                            # Update enemies for next level based on current_level
+                            # global current_enemies
+                            if current_level == 2:
+                                current_enemies = level_2_enemies
+                            elif current_level == 3:
+                                current_enemies = level_3_enemies
+                elif player.hp <= 0:
+                    update_text(f"Game Over! {player.name} has fainted!")
+                    return
+
+            enemy_buttons.append(enemy_button)
+            window.add_gloss(enemy_button)
+
+        # Clear previous text and display enemy choices
+        update_text("")
+        for button in enemy_buttons:
+            button.visible = True
+
+    window.add_gloss(attack_button)
+
+
+# Game loop
+while True:
+    # Clear screen
+    window.clear()
+
+    # Display character stats
+    display_stats()
+
+    # Display current level
+    update_text(f"\nLevel {current_level}\n")
+
+    # Enemy attacks player
+    for enemy in current_enemies:
+        enemy.attack(player)
+        if player.hp <= 0:
+            update_text(f"Game Over! {player.name} has fainted!")
+            break
+
+    # Update window and handle events
+    window.flip()
+    pyglet.app.event_loop.run()
+
+# Close window on exit
+window.close()
